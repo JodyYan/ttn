@@ -1,19 +1,14 @@
 <?php
-class Animal
+abstract class Animal
 {
     protected $name;
     protected $color;
-    protected $food;
     public function getDetail()
     {
         return ['name' => $this->name, 'color' => $this->color];
     }
 
-    public function getFavoriteFood()
-    {
-        return $this->food;
-    }
-
+    abstract public function getFavoriteFood();
 }
 
 class Cat extends Animal
@@ -22,9 +17,11 @@ class Cat extends Animal
     {
         $this->name = $name;
         $this->color = $color;
-        $this->food = 'fish';
-        $this->getDetail();
-        $this->getFavoriteFood();
+    }
+
+    public function getFavoriteFood()
+    {
+        return 'fish';
     }
 }
 
@@ -34,9 +31,11 @@ class Dog extends Animal
     {
         $this->name = $name;
         $this->color = $color;
-        $this->food = 'bone';
-        $this->getDetail();
-        $this->getFavoriteFood();
+    }
+
+    public function getFavoriteFood()
+    {
+        return 'bone';
     }
 }
 $cat = new Cat('pretty', 'black');
